@@ -11,13 +11,13 @@ const MainComp = () => {
   var requestNotification = async () => {
     var perm = await Notification.requestPermission();
     if (perm == "granted") {
+      return true;
       const notification = new Notification("DigiLabs Alerts", {
         body: "This is a push notification test.",
         data: { data: "push notification identifier" },
         icon: "/Logo.png",
         tag: "test",
       });
-      return true;
     } else {
       alert("Please grant notification access in order for this app to work.");
       return false;
