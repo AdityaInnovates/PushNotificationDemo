@@ -1,23 +1,42 @@
 "use client";
 /* global Notification */
+/* global navigator */
 import React from "react";
 
 const MainComp = () => {
-  var sendNotification = () => {
-    Notification.requestPermission().then((perm) => {
-      if (perm == "granted") {
-        const notification = new Notification("DigiLabs Alerts", {
-          body: "This is a push notification test.",
-          data: { data: "push notification identifier" },
-          icon: "/Logo.png",
-          tag: "test",
-        });
-      } else {
-        alert(
-          "Please grant notification access in order for this app to work."
-        );
-      }
-    });
+  const registerSW = async () => {
+    const registration = await navigator.serviceWorker.register("sw.js");
+    return registration;
+  };
+  var requestNotification = async () => {
+    var perm = await Notification.requestPermission();
+    if (perm == "granted") {
+      const notification = new Notification("DigiLabs Alerts", {
+        body: "This is a push notification test.",
+        data: { data: "push notification identifier" },
+        icon: "/Logo.png",
+        tag: "test",
+      });
+      return true;
+    } else {
+      alert("Please grant notification access in order for this app to work.");
+      return false;
+    }
+  };
+
+  var sendNotification = async () => {
+    if (!Notification.permission == "granted") {
+      var notificationAllowed = await requestNotification();
+    }
+    if (notificationAllowed) {
+      const reg = await registerSW();
+      reg.showNotification("DigiLabs Alerts", {
+        body: "This is a push notification test.",
+        data: { data: "push notification identifier" },
+        icon: "/Logo.png",
+        tag: "test",
+      });
+    }
   };
   return (
     <div>

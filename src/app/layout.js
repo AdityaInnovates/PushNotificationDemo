@@ -12,6 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <script src="/js/script.js" defer></script>
       <link rel="manifest" href="/manifest.json" />
       <link rel="icon" href="/logo.png"></link>
       <link rel="preconnect" href="https://fonts.googleapis.com" />
