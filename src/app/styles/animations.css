@@ -1,0 +1,53 @@
+.clipartanim {
+  /* opacity: 1; */
+  animation: clipartanimation 2s forwards;
+}
+.loadinglogoaniminit:after {
+  content: "";
+  animation: paddinganim 2s linear infinite;
+  animation-delay: var(--timing);
+  top: 34.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 100%;
+  position: absolute;
+  /* padding: 7rem; */
+  /* bottom:10rem;
+   top:10rem;
+   border: 2px solid white; */
+  background: rgba(0, 0, 225, 0.2);
+}
+.loadinglogomainimganiminit {
+  animation: scalepulseanim 1.3s linear infinite;
+}
+@keyframes paddinganim {
+  0% {
+    padding: 0.5rem;
+    opacity: 1;
+  }
+  50% {
+    box-shadow: inset 0px 0px 30px 30px #695a87;
+    /* //    backdrop-filter: blur(100px); */
+    border: 1px solid #726886;
+    opacity: 0.2rem;
+    padding: 13rem;
+  }
+  100% {
+    opacity: 0;
+    padding: 18rem;
+    border: 0px;
+  }
+}
+@keyframes clipartanimation {
+  from {
+    opacity: 0;
+    /* clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); */
+  }
+  /* 30% {
+    clip-path: polygon(0 0, 32% 0, 33% 100%, 0 100%);
+    } */
+  to {
+    opacity: 1;
+    /* clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); */
+  }
+}
