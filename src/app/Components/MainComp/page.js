@@ -25,8 +25,10 @@ const MainComp = () => {
   };
 
   var sendNotification = async () => {
+    var notificationAllowed =
+      Notification.permission == "granted" ? true : false;
     if (Notification.permission != "granted") {
-      var notificationAllowed = await requestNotification();
+      notificationAllowed = await requestNotification();
     }
     if (notificationAllowed) {
       const reg = await registerSW();
