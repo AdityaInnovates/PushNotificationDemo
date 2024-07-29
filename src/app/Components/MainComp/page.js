@@ -36,7 +36,7 @@ const MainComp = () => {
         body: "This is a push notification test.",
         data: { data: "push notification identifier" },
         icon: "/Logo.png",
-        tag: "test",
+        // tag: "test",
       });
     }
   };
